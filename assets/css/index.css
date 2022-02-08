@@ -12,3 +12,34 @@
     height: 100%;
     align-items: center;
 }
+
+
+.inputTrans {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+transition-duration: 500ms;
+}
+
+.error {
+    color: #f73a3a;
+    font-size: 13px;
+}
+
+
+
+@media only screen and (max-width: 1028px) {
+    #login {
+        height: 80vh;
+        display: flex;
+        align-items: center;
+        box-shadow: none;
+    }
+
+    #register {
+        height: 80vh;
+        display: flex;
+        align-items: center;
+        box-shadow: none;
+    }
+    
+}
