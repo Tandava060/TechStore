@@ -1,3 +1,80 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+   
+<link rel="stylesheet" href="assets/css/sidecart.css ">
+
+<section id="mySidenav" class="sidenav ">
+        <section class="row">
+            <div class="col">
+                <span class='title'>YOUR CART</span>
+            </div>
+            <div class="col">
+                <span style="cursor:pointer" class='closebtn' onclick="closeNav()">&times;</span>
+            </div>
+        </section>
+        <hr>
+        <section class='cartWrapper container'>
+            <div class='items'>
+                <div class='item row'>
+                    <div class="col-4">
+                        <div class="flip-card">
+                            <div class="flip-inner">
+                                <div class="imgwrap">
+                                    <img src="https://cdn11.bigcommerce.com/s-idcdidwm48/images/stencil/120w/products/7700/31266/CROSSHAIR17-1-1024x1024__18568.1640972744.png" alt="" srcset="">
+                                </div>
+                                <div class="card-back">
+                                    <button type="button" class="btn btn-outline-primary view">View</button>
+                                    <button type="button" class="btn btn-danger remove">Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                        </div>
+                    </div>
+                    <div class="col-8">
+                        <div class="title">
+                            <span>MSI Crosshair17 17.3" 144Hz FHD Gaming Laptop Intel Core i7-11800H RTX3060 16GB 512GBNVMe SSD Win...</span>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <table class="table table-bordered">
+                                    <td onclick="decrease(0)">&#45;</td>
+                                    <td><input type="number" class='qty' value='1' min='1' max='99' name=""></td>
+                                    <td onclick="increase(0)">&#43;</td>
+                                </table>
+                            </div>
+                            <div class="col-6">
+                                <span class='price'>Rs97,990</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+       
+            </div>
+        </section>
+        <section class="footer container">
+            <hr>
+
+            <div class="row">
+                <div class="col">
+                    <span>SUBTOTAL</span>
+                </div>
+                <div class="col">
+                    <span class='subprice'>...</span>
+                </div>
+
+                <div class='container'>
+                    <p class='shipping'>
+                        <em>Shipping, taxes, and discounts calculated at checkout.</em>
+                    </p>
+                </div>
+                <div class='checkout'>
+                    <button class="btn btn-warning ">CHECK OUT &#8594;</button>
+                </div>
+        </section>
+    </section>
+
 <header>
     <div class="container mx-auto px-6 py-3">
         <div class="flex items-center justify-between">
@@ -115,7 +192,7 @@
                 </svg>
             </div>
             <div class="flex items-center justify-end w-full">
-                <button class="text-gray-800 focus:outline-none mx-4 sm:mx-4">
+                <button  onclick='openNav()'  class="text-gray-800 focus:outline-none mx-4 sm:mx-4">
                     <svg class="h-6 w-6 sm:h-8 sm:w-8" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                         <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
                     </svg>
@@ -186,3 +263,5 @@
 
     </div>
 </header>
+
+<script src="assets/js/sidecart.js"></script>
