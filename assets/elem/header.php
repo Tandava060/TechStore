@@ -1,48 +1,51 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-   
+
 <link rel="stylesheet" href="assets/css/sidecart.css ">
 
 <section id="mySidenav" class="sidenav ">
-        <section class="row">
-            <div class="col">
+        <section class=" grid grid-cols-2 gap-4">
+            <div class="">
                 <span class='title'>YOUR CART</span>
             </div>
-            <div class="col">
+            <div class="">
                 <span style="cursor:pointer" class='closebtn' onclick="closeNav()">&times;</span>
             </div>
         </section>
-        <hr>
+        <hr class="my-8">
         <section class='cartWrapper container'>
             <div class='items'>
-                <div class='item row'>
-                    <div class="col-4">
+                <div class='item grid grid-cols-3 my-8'>
+                    <div class="col-span-1">
                         <div class="flip-card">
                             <div class="flip-inner">
                                 <div class="imgwrap">
                                     <img src="https://cdn11.bigcommerce.com/s-idcdidwm48/images/stencil/120w/products/7700/31266/CROSSHAIR17-1-1024x1024__18568.1640972744.png" alt="" srcset="">
                                 </div>
                                 <div class="card-back">
-                                    <button type="button" class="btn btn-outline-primary view">View</button>
-                                    <button type="button" class="btn btn-danger remove">Remove</button>
+                                
+                                    
+                                    <button type="button" class="py-2 px-8 my-2  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white  transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                                   View</button>
+                                    <button type="button" class="py-2 px-8 my-2 bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white  transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                                        Delete</button>
                                 </div>
                             </div>
                         </div>
                         <div>
                         </div>
                     </div>
-                    <div class="col-8">
+                    <div class="col-span-2">
                         <div class="title">
                             <span>MSI Crosshair17 17.3" 144Hz FHD Gaming Laptop Intel Core i7-11800H RTX3060 16GB 512GBNVMe SSD Win...</span>
                         </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <table class="table table-bordered">
+                        <div class="grid grid-cols-2">
+                            <div class="">
+                                <table class="table-fixed table">
                                     <td onclick="decrease(0)">&#45;</td>
                                     <td><input type="number" class='qty' value='1' min='1' max='99' name=""></td>
                                     <td onclick="increase(0)">&#43;</td>
                                 </table>
                             </div>
-                            <div class="col-6">
+                            <div class="">
                                 <span class='price'>Rs97,990</span>
                             </div>
                         </div>
@@ -56,25 +59,26 @@
         <section class="footer container">
             <hr>
 
-            <div class="row">
-                <div class="col">
+            <div class="grid grid-cols-2">
+                <div class="">
                     <span>SUBTOTAL</span>
                 </div>
-                <div class="col">
+                <div class="">
                     <span class='subprice'>...</span>
                 </div>
-
-                <div class='container'>
+                </div>
+                <div class='container my-8'>
                     <p class='shipping'>
                         <em>Shipping, taxes, and discounts calculated at checkout.</em>
                     </p>
                 </div>
                 <div class='checkout'>
-                    <button class="btn btn-warning ">CHECK OUT &#8594;</button>
+                    <button class="py-2 px-8 my-2  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white  transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  ">CHECK OUT &#8594;</button>
                 </div>
         </section>
     </section>
 
+    <section id="main">
 <header>
     <div class="container mx-auto px-6 py-3">
         <div class="flex items-center justify-between">
@@ -263,5 +267,7 @@
 
     </div>
 </header>
-
+</section>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+   
 <script src="assets/js/sidecart.js"></script>

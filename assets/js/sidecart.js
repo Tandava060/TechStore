@@ -15,10 +15,16 @@ function getNav() {
                 margin: "0",
             };
             break;
+         case s < 1200:
+                obj = {
+                    width: "30%",
+                    margin: "30",
+                };
+                break;
         default:
             obj = {
-                width: "30%",
-                margin: "30%",
+                width: "25%",
+                margin: "25%",
             };
     }
     return obj;
@@ -27,10 +33,9 @@ function getNav() {
 function openNav() {
     let size = getNav();
     document.getElementById("mySidenav").style.width = size.width;
-    document.getElementById("main").style.marginRight = size.margin;
+    
     document.getElementById("main").style.pointerEvents = "none";
-    document.getElementById("main").style.opacity = "0.6";
-    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+    
     getTotal();
 }
 

@@ -436,7 +436,7 @@
         display: flex !important;
     }
 }
-z-index: 1;
+
 /* SideNav */
 
 .sidenav {
@@ -498,19 +498,13 @@ z-index: 1;
     /* margin-right: 1%; */
 }
 
-.sidenav .item div div .table {
-    margin: auto;
-}
+
 
 .sidenav .item div div .table td input {
     -webkit-appearance: none;
     -moz-appearance: textfield;
-    margin: 0;
-    width: 32px;
-    background-color: #111;
-    border: 0;
-    color: #f1f1f1;
-    text-align: center;
+    width: 50px;
+    color: #050505;
 }
 
 .sidenav .item div div .table td {
@@ -686,8 +680,3 @@ z-index: 1;
     }
 }
 
-#main {
-    transition: margin-right .5s;
-    background-color: beige;
-    height: 100vh;
-}
