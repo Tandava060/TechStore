@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com?plugins=aspect-ratio,forms"></script>
+    <link rel="stylesheet" href="assets/css/index.css" />
 </head>
 
 <body>
@@ -219,6 +220,24 @@
 
                             <div class="col-span-5">
                                 <div class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-12">
+                                    
+                                
+                                <?php
+
+                                $query = 'SELECT * FROM product WHERE category = "Gaming"';
+                                $run_query = mysqli_query($con, $query);
+                                if (mysqli_num_rows($run_query) > 0) {
+                                    while ($row = mysqli_fetch_array($run_query)) {
+                                        $prod_name = $row['name'];
+                                        $prod_descri = $row['description'];
+                                        $prod_price = $row['price'];
+                                        
+                                        
+                                    }
+                                }
+                                
+                                
+                                ?>
                                     <div class="mb-10">
                                         <a class="relative block" href="/singleProduct.html">
                                             <img class="object-cover w-full h-64 rounded-t-2xl" src="https://images.unsplash.com/photo-1601070124916-5ad3dd628d28?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80" alt="Sports Trainer White" loading="lazy" />
