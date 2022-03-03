@@ -437,6 +437,7 @@
     }
 }
 
+
 /* SideNav */
 
 .sidenav {
@@ -497,8 +498,6 @@
     margin: 10px 1%;
     /* margin-right: 1%; */
 }
-
-
 
 .sidenav .item div div .table td input {
     -webkit-appearance: none;
@@ -602,6 +601,7 @@
     background-color: #f1f1f1;
     object-fit: contain;
     max-height: 100px;
+    margin: 0 auto;
 }
 
 .sidenav .footer div span {
@@ -679,4 +679,3 @@
         margin-right: 10px;
     }
 }
-
