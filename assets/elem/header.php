@@ -53,6 +53,22 @@
                 </div>
                 <hr>
 
+                <?php
+                include 'config/dbconnect.php';
+
+                $query = 'SELECT product.name, product.name, product.price FROM cart JOIN user ON cart.userId = user.userId JOIN product ON product.pId = cart.pId WHERE cart.status = "cart" AND user.userId = 1';
+                $run_query = mysqli_query($con, $query);
+                if(mysqli_num_rows($run_query) > 0){
+                    while ($row = mysqli_fetch_array($run_query)) {
+                        $prod_name = $row['name'];
+                        $prod_descri = $row['description'];
+                        $prod_price = $row['price'];
+
+                        echo $prod_name;
+                    }
+                } 
+                ?>
+
        
             </div>
         </section>
