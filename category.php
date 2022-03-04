@@ -223,17 +223,51 @@
                                     
                                 
                                 <?php
-
-                                $query = 'SELECT * FROM product WHERE category = "Gaming"';
+                                $url_cat = $_GET['cat'];
+                                $query = 'SELECT * FROM product WHERE category = '.$url_cat;
                                 $run_query = mysqli_query($con, $query);
                                 if (mysqli_num_rows($run_query) > 0) {
                                     while ($row = mysqli_fetch_array($run_query)) {
+                                        $prod_id = $row['pId'];
                                         $prod_name = $row['name'];
                                         $prod_descri = $row['description'];
                                         $prod_price = $row['price'];
+
+                                        echo '<div class="mb-10">
+                                        <a class="relative block" href="/ecommerce/product.php?id='.$prod_id.'">
+                                            <img class="object-cover w-full h-64 rounded-t-2xl" src="https://images.unsplash.com/photo-1601070124916-5ad3dd628d28?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80" alt="Sports Trainer White" loading="lazy" />
+
+                                            <button class="absolute p-2 text-white bg-indigo-800 rounded-full right-4 top-4" type="button">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                                </svg>
+                                            </button>
+
+                                            <div>
+                                                <div class="px-4 py-6 border-gray-100 border-x relative">
+
+                                                    <p class=" font-semibold text-s text-indigo-800 text-right">
+                                                        Rs'.$prod_price. '
+                                                    </p>
+
+                                                    <h5 class="font-medium">
+                                                        ' . $prod_name . '
+                                                    </h5>
+
+                                                    <p class="mt-1 text-xs leading-relaxed text-gray-700">
+                                                        ' . $prod_descri . '
+                                                    </p>
+                                                </div>
+
+                                                <button class="w-full rounded-b-2xl p-3 text-xs tracking-wide text-center text-white uppercase bg-indigo-800 hover:bg-indigo-600" type="button">
+                                                    Add to Cart
+                                                </button>
+                                            </div>
+                                        </a>
+                                    </div>';
                                         
                                         
-                                    }
+                                    };
                                 }
                                 
                                 
