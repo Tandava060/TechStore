@@ -288,7 +288,8 @@ if(isset($_SESSION["uid"])){
     
     
 } else {
-    echo '<a href="/ecommerce/login.php" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600">Login</a><a href="/ecommerce/register.php" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600"> Sign Up</a>';
+    echo '<a href="/ecommerce/login.php" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600">Login</a><a href="/ecommerce/register.php" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600"> Sign Up</a>
+    <a href="/ecommerce/addProduct.php" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600">Add Product</a>';
                       
 }
                            
