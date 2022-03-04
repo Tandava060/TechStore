@@ -19,6 +19,8 @@
     include 'assets/elem/header.php';
     ?>
 
+   
+
     <section>
         <div class="px-4 py-12 mx-auto max-w-6xl sm:px-6 md:px-12 lg:px-24 lg:py-12 2xl:py-24">
                <div class="w-full px-6 py-3 col-span-3">
@@ -38,7 +40,10 @@
                                 </div>
                             </div>
 
-                     
+                            <div>
+                                    <label for="stock" class="px-2 leading-10 text-sm text-gray-600">Stock</label>
+                                    <input required type="number" name="stock" id="stock" class="w-full px-5  py-3 placeholder-gray-400 border border-transparent rounded-lg inputTrans  bg-gray-50 focus:ring-2 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-300" placeholder="20000">
+                                </div>
 
                             <div>
                                 <label for="email" class="px-2 leading-10 text-sm text-gray-600">Description</label>
@@ -85,11 +90,12 @@ if (isset($_POST["add"])) {
     $price = $_POST["price"];
     $description = $_POST["description"];
     $category= $_POST["category"];
+    $stock= $_POST["stock"];
    
     
   
 
-    $sql = "INSERT INTO `product`(name,price,description,category) VALUES ('$name', '$price', '$description', '$category')";
+    $sql = "INSERT INTO `product`(name,price,description,category, stock) VALUES ('$name', '$price', '$description', '$category', '$stock')";
    
     if(mysqli_query($con,$sql)){
         $pId = mysqli_insert_id($con);

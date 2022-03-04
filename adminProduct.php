@@ -15,42 +15,85 @@
     <?php
     include 'assets/elem/header.php';
     ?>
+ <script>var arr = []; </script>
 
-
-<section class="min-h-5/6">
+<section style="min-height: 80vh;" class=" mt-10">
 <table class="mx-auto table p-4 bg-white shadow rounded-lg">
     <thead>
         <tr>
             <th class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
-                #
+                no
             </th>
             <th class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
-                First name
+               Name
             </th>
             <th class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
-                Last name
+                Category
             </th>
             <th class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
-                Username
+                Stock
+            </th>
+            <th class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
+                Edit
+            </th>
+            <th class="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
+                Delete
             </th>
         </tr>
     </thead>
-    <tbody>
-        <tr class="text-gray-700">
+    <tbody id="bodyProd">
+
+    <?php
+            $query = 'SELECT * FROM product ORDER BY pId DESC';
+            $run_query = mysqli_query($con, $query);
+            if (mysqli_num_rows($run_query) > 0) {
+                while ($row = mysqli_fetch_array($run_query)) {
+                    echo '<script> 
+                            var obj = {
+                                id: ' . $row['pId'] . ',
+                                name: "' . $row['name'] . '",
+                                stock : "' . $row['stock'] . '",
+                                category: "' . $row['category'] . '"
+                            }; 
+                            arr.push(obj);
+                        </script>';
+                }
+            }
+
+            ?>
+
+<script>
+               let tab = document.getElementById("bodyProd");
+               let trow = "";
+               arr.forEach((prod, index) => {
+                trow = `
+                <tr class="text-gray-700">
             <td class="border-b-2 p-4 dark:border-dark-5">
-                1
+                ${index}
             </td>
             <td class="border-b-2 p-4 dark:border-dark-5">
-                Jean Marc
+            ${prod.name}
             </td>
             <td class="border-b-2 p-4 dark:border-dark-5">
-                Louis
+            ${prod.category}
             </td>
             <td class="border-b-2 p-4 dark:border-dark-5">
-                Jl987
+            ${prod.stock}
+            </td>
+            <td class="border-b-2 p-4 dark:border-dark-5">
+                prouveE
+            </td>
+            <td class="border-b-2 p-4 dark:border-dark-5">
+                prouveE
             </td>
         </tr>
-        <tr class="text-gray-700">
+                `;
+                tab.innerHTML += trow;
+               })
+
+            </script>
+        
+        <!-- <tr class="text-gray-700">
             <td class="border-b-2 p-4 dark:border-dark-5">
                 2
             </td>
@@ -63,35 +106,14 @@
             <td class="border-b-2 p-4 dark:border-dark-5">
                 prouveE
             </td>
-        </tr>
-        <tr class="text-gray-700">
             <td class="border-b-2 p-4 dark:border-dark-5">
-                3
+                prouveE
             </td>
             <td class="border-b-2 p-4 dark:border-dark-5">
-                Julien
+                prouveE
             </td>
-            <td class="border-b-2 p-4 dark:border-dark-5">
-                Clai
-            </td>
-            <td class="border-b-2 p-4 dark:border-dark-5">
-                CJUL87
-            </td>
-        </tr>
-        <tr class="text-gray-700">
-            <td class="border-b-2 p-4 dark:border-dark-5">
-                4
-            </td>
-            <td class="border-b-2 p-4 dark:border-dark-5">
-                Igor
-            </td>
-            <td class="border-b-2 p-4 dark:border-dark-5">
-                Louth
-            </td>
-            <td class="border-b-2 p-4 dark:border-dark-5">
-                IGL89_9
-            </td>
-        </tr>
+        </tr> -->
+        
     </tbody>
 </table>
 </section>
