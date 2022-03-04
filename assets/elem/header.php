@@ -1,5 +1,9 @@
 <link rel="stylesheet" href="assets/css/sidecart.css ">
 
+<?php
+session_start();
+?>
+
 <section id="mySidenav" class="sidenav ">
     <section class=" grid grid-cols-2 gap-4">
         <div class="">
@@ -288,7 +292,13 @@ if(isset($_SESSION["uid"])){
                         ?>
                         </div>
                     </div>
-
+<?php
+                    if(isset($_SESSION["name"])){
+    echo "Welcome ".$_SESSION["name"];
+ 
+              
+}
+?>
 
                     <div class="flex sm:hidden">
                         <button type="button" class="text-gray-600 hover:text-gray-500 focus:outline-none focus:text-gray-500" aria-label="toggle menu">

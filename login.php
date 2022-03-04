@@ -96,7 +96,7 @@ if(isset($_POST['login']))
         document.getElementById("alert").style.display = "flex";
         
         </script>';
-                        exit();
+                  
             }
  
     } else {
