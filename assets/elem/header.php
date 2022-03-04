@@ -59,9 +59,10 @@ session_start();
             <?php
             include 'config/dbconnect.php';
 
-            $query = 'SELECT product.name, product.description, product.price FROM cart JOIN user ON cart.userId = user.userId JOIN product ON product.pId = cart.pId WHERE cart.status = "cart" AND user.userId = 1';
+            $query = 'SELECT product.name, product.description, product.price FROM cart JOIN user ON cart.userId = user.userId JOIN product ON product.pId = cart.pId WHERE cart.status = "cart" AND user.userId = '. $_SESSION["uid"];
             $run_query = mysqli_query($con, $query);
             if (mysqli_num_rows($run_query) > 0) {
+                $index=1;
                 while ($row = mysqli_fetch_array($run_query)) {
                     $prod_name = $row['name'];
                     $prod_descri = $row['description'];
@@ -92,9 +93,9 @@ session_start();
                         <div class="grid grid-cols-2">
                             <div class="">
                                 <table class="table-fixed table">
-                                    <td onclick="decrease(0)">&#45;</td>
+                                    <td onclick="decrease('.$index. ')">&#45;</td>
                                     <td><input type="number" class="qty" value="1" min="1" max="99" name=""></td>
-                                    <td onclick="increase(0)">&#43;</td>
+                                    <td onclick="increase(' . $index . ')">&#43;</td>
                                 </table>
                             </div>
                             <div class="">
@@ -104,6 +105,7 @@ session_start();
                     </div>
                 </div>
                 <hr>';
+                $index++;
                 };
             }
             ?>
@@ -274,31 +276,26 @@ session_start();
                             </svg>
                         </button>
                         <div class=" hidden absolute left-0 z-20 w-44 top-10 bg-white rounded-md shadow-xl">
-                        <?php
+                            <?php
 
-if(isset($_SESSION["uid"])){
-    echo '<a href="/ecommerce/logout.php" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600">Logout</a>';
-    
-    
-} else {
-    echo '<a href="/ecommerce/login.php" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600">Login</a><a href="/ecommerce/register.php" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600"> Sign Up</a>
+                            if (isset($_SESSION["uid"])) {
+                                echo '<a href="/ecommerce/logout.php" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600">Logout</a>';
+                            } else {
+                                echo '<a href="/ecommerce/login.php" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600">Login</a><a href="/ecommerce/register.php" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600"> Sign Up</a>
     <a href="/ecommerce/addProduct.php" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600">Add Product</a>';
-                      
-}
-                           
+                            }
 
-                      
 
-                        ?>
+
+
+                            ?>
                         </div>
                     </div>
-<?php
-                    if(isset($_SESSION["name"])){
-    echo "Welcome ".$_SESSION["name"];
- 
-              
-}
-?>
+                    <?php
+                    if (isset($_SESSION["name"])) {
+                        echo $_SESSION["name"];
+                    }
+                    ?>
 
                     <div class="flex sm:hidden">
                         <button type="button" class="text-gray-600 hover:text-gray-500 focus:outline-none focus:text-gray-500" aria-label="toggle menu">
@@ -341,3 +338,12 @@ if(isset($_SESSION["uid"])){
 </section>
 
 <script src="assets/js/sidecart.js"></script>
+
+<?php
+     function add_to_cart($con, $id){
+        $query = "INSERT INTO `cart` (`id`, `userId`, `pId`, `qty`, `status`) VALUES (NULL, " . $_SESSION['uid'] . ", ".$id.", '1', 'cart');";
+        if (mysqli_query($con, $query)) {
+            // ANIMATION
+        };
+     };
+?>

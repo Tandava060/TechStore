@@ -23,12 +23,33 @@
     <?php
     include 'assets/elem/header.php';
     include 'assets/elem/searchBar.php';
-  
+
+    ?>
+
+    <?php
+    $url_sts = $_GET['sts'];
+
+    if (strlen($url_sts) > 0 && isset($_SESSION["uid"])) {
+        echo '<div id="alert" class=" max-w-6xl mx-auto p-4 mb-4 bg-green-100 rounded-lg dark:bg-green-200" role="alert">
+        <svg class="flex-shrink-0 w-5 h-5 text-green-700 dark:text-green-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+        </svg>
+        <div id="alertText" class=" ml-3 text-sm font-medium text-green-700 dark:text-green-800">' . $url_sts . '</div>
+        <button type="button" onclick="(function(){ document.getElementById("alert").style.display = "none";  })()" class="ml-auto -mx-1.5 -my-1.5 bg-green-100 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex h-8 w-8 dark:bg-green-200 dark:text-green-600 dark:hover:bg-green-300" data-collapse-toggle="alert-2" aria-label="Close">
+            <span class="sr-only">Close</span>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+            </svg>
+        </button>
+    </div>';
+    }
+
     ?>
 
 
-
     <section id="category" class="container mx-auto px-6 mt-16">
+
+
 
         <div class="h-64 rounded-md overflow-hidden bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1538481199705-c710c4e965fc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1565&q=80')">
             <div class="bg-gray-900 bg-opacity-50 categoryContainer">
@@ -136,11 +157,12 @@
                                 </p>
                             </div>
 
-                            <button class="w-full rounded-b-2xl p-3 text-xs tracking-wide text-center text-white uppercase bg-indigo-800 hover:bg-indigo-600" type="button">
-                                Add to Cart
-                            </button>
+                            
                         </div>
                     </a>
+                    <button onclick="' . add_to_cart($con, $prod_id) . '" style="z-index:100;" class="w-full rounded-b-2xl p-3 text-xs tracking-wide text-center text-white uppercase bg-indigo-800 hover:bg-indigo-600" type="button">
+                                Add to Cart
+                            </button>
                 </li>';
                     };
                 }
@@ -332,6 +354,10 @@
         <div id="AllProd" class="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
 
             <script>
+                var url = new URL(window.location.href);
+                const params = new URLSearchParams(url.search.slice(1));
+                params.delete("message");
+                window.history.replaceState({}, "", `${window.location.pathname}`);
                 var page = 0;
                 var arr = [];
             </script>
@@ -383,7 +409,7 @@
                 //         '</p></div><button class="w-full rounded-b-2xl p-3 text-xs tracking-wide text-center text-white uppercase bg-indigo-800 hover:bg-indigo-600" type="button">Add to Cart</button></div></a></div>';
                 // })
             </script>
-            
+
 
             <div class="mb-10">
                 <a class="relative block" href="/product/sports-trainer">
