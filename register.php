@@ -122,7 +122,7 @@ if (isset($_POST["register"])) {
         $_SESSION["uid"] = mysqli_insert_id($con);
         $_SESSION["name"] = $fname;
         
-        echo "<script> location.href='index.php'; </script>";
+        echo "<script> location.href='index.php?sts=Welcome '".$SESSION['name']." you have successfully created an account.; </script>";
         
         
     } else {

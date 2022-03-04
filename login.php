@@ -87,7 +87,7 @@ if(isset($_POST['login']))
         $_SESSION["uid"] = $row['userId'];
         $_SESSION["name"] = $row['forename'];
         
-        echo "<script> location.href='index.php'; </script>";
+        echo "<script> location.href='index.php?sts=Successful Login, Welcome Back'; </script>";
         
              }
             } else {
