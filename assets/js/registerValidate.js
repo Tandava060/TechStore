@@ -10,7 +10,7 @@ $().ready(function() {
       );
 
       $.validator.addMethod("equalStr", function(value, element) {
-        return password.value == rePassword.value
+        return password.value === rePassword.value
         
     }, "* Password should be equal to repassword");
 
