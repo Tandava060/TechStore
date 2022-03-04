@@ -66,16 +66,27 @@
                     </ul>
                 </div>
 
-                <div class="lg:flex lg:flex-col lg:justify-center lg:h-full">
+                <?php
+                $url_id = $_GET['id'];
+                $query = 'SELECT * FROM product WHERE pId = '.$url_id;
+                $run_query = mysqli_query($con, $query);
+                while ($row = mysqli_fetch_array($run_query)) {
+               
+                    $prod_name = $row['name'];
+                    $prod_descri = $row['description'];
+                    $prod_price = $row['price'];
+                    $prod_cat = $row['category'];
+                
+                    echo '<div class="lg:flex lg:flex-col lg:justify-center lg:h-full">
                     <form class="space-y-4 lg:pt-8">
 
                         <div>
                             <h1 class="text-2xl text-center font-medium lg:text-3xl sm:mb-6">
-                                Dell Inspiron 3511
+                               '. $prod_name. '
                             </h1>
 
                             <p class="text-2xl text-center text-indigo-700 font-bold">
-                                Rs54000
+                                Rs ' . $prod_price . '
                             </p>
                         </div>
 
@@ -117,7 +128,8 @@
                 <div class="lg:col-span-3">
                     <div class="max-w-none">
                         <h3 class="text-2xl font-medium text-indigo-700">Description</h3>
-                        <p>Dell Inspiron 3511 Intel 11th Gen Processor 15.6-inch FHD (1920 x 1080) Anti-glare LED, Windows 11 Home, Carbon Black, 4 Years Warranty</p>
+                        ' . $prod_descri . '
+                        <!-- <p>Dell Inspiron 3511 Intel 11th Gen Processor 15.6-inch FHD (1920 x 1080) Anti-glare LED, Windows 11 Home, Carbon Black, 4 Years Warranty</p>
                         <h4 class="text-xl font-small text-indigo-700 mt-5">Features: </h4>
                         <ul>
                             <li>15.6" FHD, IPS-Level 144Hz 45%NTSC | 1920x1080 16:9</li>
@@ -126,9 +138,11 @@
                             <li>16GB (8G*2) DDR4 3200MHz; 2 Sockets, Max Memory 64GB | 512GB NVMe SSD</li>
                             <li>RTL8111HS-CG | Intel Wi-Fi 6 AX201(2*2 ax) | BT 5.1</li>
 
-                        </ul>
+                        </ul> -->
                     </div>
-                </div>
+                </div>';
+                };
+                ?>
             </div>
         </div>
     </section>
@@ -140,6 +154,52 @@
 
         <div class="mt-8 swiper">
             <ul class="swiper-wrapper">
+
+                <?php
+                    $url_id = $_GET['id'];
+                    $query = 'SELECT * FROM product WHERE category = (SELECT category FROM product WHERE pId = '.$url_id.');';
+                    $run_query = mysqli_query($con, $query);
+                    while ($row = mysqli_fetch_array($run_query)) {
+                        $prod_id = $row['pId'];
+                        $prod_name = $row['name'];
+                        $prod_price = $row['price'];
+                        $prod_descri = $row['description'];
+                        echo '<li class="swiper-slide">
+                    <a class="relative block" href="/ecommerce/product.php?id='.$prod_id. '">
+                        <img class="object-cover w-full h-64  rounded-t-2xl" src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Sports Trainer White" loading="lazy" />
+
+                        <button class="absolute p-2 text-white bg-indigo-800 rounded-full right-4 top-3" type="button">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                            </svg>
+                        </button>
+
+                        <div>
+                            <div class="px-4 py-6 border-gray-100 border-x">
+
+                                <p class=" font-semibold text-s text-indigo-800 text-right">
+                                    Rs ' . $prod_price . '
+                                </p>
+
+                                <h5 class="font-medium">
+                                    ' . $prod_name . '
+                                </h5>
+
+
+                                <p class="mt-1 text-xs leading-relaxed text-gray-700">
+                                    ' . $prod_descri . '
+                                </p>
+                            </div>
+
+                            <button class="w-full rounded-b-2xl p-3 text-xs tracking-wide text-center text-white uppercase bg-indigo-800 hover:bg-indigo-600" type="button">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </a>
+                </li>';
+                    };
+                ?>
+
                 <li class="swiper-slide">
                     <a class="relative block" href="/product/sports-trainer">
                         <img class="object-cover w-full h-64  rounded-t-2xl" src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Sports Trainer White" loading="lazy" />
@@ -378,7 +438,5 @@
         })
     </script>
     <script src="assets/js/index.js"></script>
-
 </body>
-
 </html>

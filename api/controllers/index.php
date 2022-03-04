@@ -1,6 +1,13 @@
 <?php
+    class Index{
 
-/**
- * The home page controller
- */
+        function _construct(){
 
+        }
+
+        function getProds($con, $start, $len){
+            
+        }
+
+    }
+?>

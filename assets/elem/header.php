@@ -55,7 +55,7 @@
             <?php
             include 'config/dbconnect.php';
 
-            $query = 'SELECT product.name, product.name, product.price FROM cart JOIN user ON cart.userId = user.userId JOIN product ON product.pId = cart.pId WHERE cart.status = "cart" AND user.userId = 1';
+            $query = 'SELECT product.name, product.description, product.price FROM cart JOIN user ON cart.userId = user.userId JOIN product ON product.pId = cart.pId WHERE cart.status = "cart" AND user.userId = 1';
             $run_query = mysqli_query($con, $query);
             if (mysqli_num_rows($run_query) > 0) {
                 while ($row = mysqli_fetch_array($run_query)) {
@@ -83,7 +83,7 @@
                     </div>
                     <div class="col-span-2">
                         <div class="title">
-                            <span>'.$prod_name.'</span>
+                            <span>' . $prod_name . '</span>
                         </div>
                         <div class="grid grid-cols-2">
                             <div class="">
@@ -94,13 +94,12 @@
                                 </table>
                             </div>
                             <div class="">
-                                <span class="price">Rs'.$prod_price.'</span>
+                                <span class="price">Rs' . $prod_price . '</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <hr>';
-                
                 };
             }
             ?>
@@ -298,16 +297,16 @@
                             <path d="M12 15.713L18.01 9.70299L16.597 8.28799L12 12.888L7.40399 8.28799L5.98999 9.70199L12 15.713Z" fill="currentColor"></path>
                         </svg>
                         <div class="hidden absolute left-0 z-20 w-44 top-8 bg-white rounded-md shadow-xl">
-                            <a href="#" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600">
+                            <a href="/ecommerce/category.php?cat='Gaming'" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600">
                                 Gaming
                             </a>
-                            <a href="#" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600">
+                            <a href="/ecommerce/category.php?cat='Computer'" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600">
                                 Laptops & Computers
                             </a>
-                            <a href="#" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600">
+                            <a href="/ecommerce/category.php?cat='Mobile'" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600">
                                 Mobile & Tablets
                             </a>
-                            <a href="#" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600">
+                            <a href="/ecommerce/category.php?cat='Accessories'" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600">
                                 Accessories
                             </a>
                         </div>
