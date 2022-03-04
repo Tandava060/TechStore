@@ -69,15 +69,6 @@
                             <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                                 <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
 
-    
-        
-          
-    
-
-        
-    
-
-  
                             </svg>
                         </button>
                     </div>
@@ -145,18 +136,7 @@
                     <a class="relative block" href="/ecommerce/product.php?id=' . $prod_id . '">
                         <img class="object-cover w-full h-64  rounded-t-2xl" src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Sports Trainer White" loading="lazy" />
 
-                        <button class="absolute p-2 text-white bg-indigo-800 rounded-full right-4 top-3" type="button">
-
-    
-        
-          
-    
-
-        
-    
-
-  
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <button class="absolute p-2 text-white bg-indigo-800 rounded-full right-4 top-3" type="button"> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
                             </svg>
                         </button>
@@ -175,18 +155,7 @@
                                 <p class="mt-1 text-xs leading-relaxed text-gray-700">
                                      ' . $prod_descri . '
                                 </p>
-                            </div>
-
-
-    
-        
-          
-    
-
-        
-
-  
-                            
+                            </div>    
                         </div>
                     </a>
                     <button onclick="' . add_to_cart($con, $prod_id) . '" style="z-index:100;" class="w-full rounded-b-2xl p-3 text-xs tracking-wide text-center text-white uppercase bg-indigo-800 hover:bg-indigo-600" type="button">
@@ -201,17 +170,6 @@
                 <!-- <li class="swiper-slide">
                     <a class="relative block" href="/product/sports-trainer">
                         <img class="object-cover w-full h-64  rounded-t-2xl" src="https://images.unsplash.com/photo-1624705002806-5d72df19c3ad?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80" alt="Sports Trainer White" loading="lazy" />
-
-
-    
-          
-            
-    
-
-          
-          
-            
-
   
                         <button class="absolute p-2 text-white bg-indigo-800 rounded-full right-4 top-4" type="button">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -344,13 +302,6 @@
             <div class="mt-12 swiper-pagination"></div>
         </div>
 
-    
-        
-          
-    
-
-
-  
     </section>
     <section class="max-w-screen-xl px-4 pb-12 mx-auto sm:px-6 lg:px-8 sm:mt-10">
         <h2 class="text-3xl font-medium text-indigo-800 text-center mb-12">
@@ -561,14 +512,6 @@
 
                 <li>
 
-    
-        
-          
-    
-
-        
-
-  
                     <a href="" class="block w-8 h-8 leading-8 text-center text-white bg-blue-600  rounded-full hover:bg-blue-500 hover:text-white hover:border-none"> 1 </a>
                 </li>
                 <li class="block w-8 h-8 leading-8 text-center border border-gray-100 rounded-full hover:bg-blue-500 hover:text-white hover:border-none">2</li>
@@ -585,17 +528,6 @@
                     </button>
                 </li>
             </ol>
-
-
-    
-        
-          
-    
-
-        
-    
-
-  
         </div>
     </section>
 
