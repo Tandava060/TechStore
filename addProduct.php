@@ -25,18 +25,16 @@
                         <div class="mt-3 text-left sm:mt-5">
                             <h3 class="text-4xl text-center text-indigo-600 font-medium lg:text-5xl">Add Product</h3>
                         </div>
-                        <form id="registration" name="registration" action="register.php" method="post" class="mt-6 space-y-5" novalidate>
+                        <form  enctype="multipart/form-data" name="registration" action="addProduct.php" method="post" class="mt-6 space-y-5">
                             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                                 <div>
                                     <label for="name" class="px-2 leading-10 text-sm text-gray-600">Name</label>
-                                    <input type="text" name="name" id="name" class="w-full px-5  py-3 placeholder-gray-400 border border-transparent rounded-lg inputTrans  bg-gray-50 focus:ring-2 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-300
-                        " placeholder="Msi">
+                                    <input required type="text" name="name" id="name" class="w-full px-5  py-3 placeholder-gray-400 border border-transparent rounded-lg inputTrans  bg-gray-50 focus:ring-2 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-300 " placeholder="Msi">
                                 </div>
 
                                 <div>
                                     <label for="price" class="px-2 leading-10 text-sm text-gray-600">price</label>
-                                    <input type="number" name="price" id="price" class="w-full px-5  py-3 placeholder-gray-400 border border-transparent rounded-lg inputTrans  bg-gray-50 focus:ring-2 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-300
-                        " placeholder="Doe">
+                                    <input required type="number" name="price" id="price" class="w-full px-5  py-3 placeholder-gray-400 border border-transparent rounded-lg inputTrans  bg-gray-50 focus:ring-2 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-300" placeholder="20000">
                                 </div>
                             </div>
 
@@ -44,13 +42,27 @@
 
                             <div>
                                 <label for="email" class="px-2 leading-10 text-sm text-gray-600">Description</label>
-                                <input type="text" name="email" id="email" class="w-full px-5  py-3 placeholder-gray-400 border border-transparent rounded-lg inputTrans  bg-gray-50 focus:ring-2 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-300
-                " placeholder="e.g johndoe@gmail.com">
+                                <textarea required id="summernote" name="description"></textarea>
                             </div>
 
 
+                            <div class="form-control w-full max-w-xs">
+                            <label for="category" class="px-2 leading-10 text-sm text-gray-600">Category</label>
+  <select  required name="category" class="w-full px-5  py-3 placeholder-gray-400 border border-transparent rounded-lg inputTrans  bg-gray-50 focus:ring-2 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-300">
+    <option disabled selected>Pick one</option>
+    <option value="Gaming">Gaming</option>
+    <option value="Laptops & Gaming">Laptops & Gaming</option>
+    <option value="Mobile & Tablets">Mobile & Tablets</option>
+    <option value="Accessories">Accessories</option>
+  </select>
 
+</div>
 
+            <div>
+            <label>Select Image File:</label>
+    <input  required type="file" name="image[]" multiple accept="image/x-png,image/gif,image/jpeg">
+   
+            </div>
                             <div class="flex flex-col mt-4 lg:space-y-2">
                                 <button type="submit" name="add" class=" flex items-center justify-center  w-full  px-8  py-3 font-medium  text-center text-white inputTrans  bg-indigo-600 rounded-xl hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 "> Register </button>
 
@@ -69,35 +81,63 @@ include 'config/dbconnect.php';
 
 if (isset($_POST["add"])) {
 
-	$fname = $_POST["fname"];
+	$name = $_POST["name"];
     $price = $_POST["price"];
-    $email = $_POST["email"];
-    $mobile = $_POST["mobile"];
-    $password= md5($_POST["password"]);
+    $description = $_POST["description"];
+    $category= $_POST["category"];
+   
+    
+  
 
-    $sql="SELECT * FROM user WHERE email='$email'"; 
-    $run= mysqli_query($con,$sql);  
-    if (mysqli_num_rows($run) > 0) {
-        echo '<script>document.getElementById("alertText").innerHTML = "Account Already Exists!";
-        document.getElementById("alert").style.display = "flex";</script>';
-    } else {
-
-    $sql = "INSERT INTO `user`(forename,surname,email,mob,pwdhash) VALUES ('$fname', '$price', '$email', '$mobile', '$password')";
+    $sql = "INSERT INTO `product`(name,price,description,category) VALUES ('$name', '$price', '$description', '$category')";
+   
     if(mysqli_query($con,$sql)){
-        $_SESSION["uid"] = mysqli_insert_id($con);
-        $_SESSION["name"] = $fname;
+        $pId = mysqli_insert_id($con);
+        $fileNames = array_filter($_FILES['image']['name']); 
+    if(!empty( $fileNames)) { 
+       
         
-        echo "<script> location.href='index.php'; </script>";
-        
-        
-    } else {
-        echo '<script>document.getElementById("alertText").innerHTML = "Error Occured, Please try again later!";
-        document.getElementById("alert").style.display = "flex";</script>';
+        foreach($_FILES['image']['name'] as $key=>$val){
+            
+            $image = $_FILES['image']['tmp_name'][$key]; 
+            $imgContent = addslashes(file_get_contents($image)); 
+            
+         $sql = "INSERT into images (image, pId) VALUES ('$imgContent', '$pId')";
+            $insert = $con->query($sql); 
+            echo "<script>console.log('a')</script>";
+        }
+      
+           
     }
 
-}
+      
+        echo "<script> location.href='addProduct.php'; </script>";
+        
+        
+    } else {
+        echo("Error description: " . $con -> error);
+    }
 }
 ?>
+
+<script>
+      $('#summernote').summernote({
+        placeholder: 'Hello stand alone ui',
+        tabsize: 2,
+        height: 120,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video']],
+          ['fontname'],
+          ['view', ['fullscreen', 'codeview', 'help']],
+        ]
+      });
+    </script>
+
     <script src="assets/js/index.js"></script>
     <script src="assets/js/registerValidate.js"></script>
 </body>

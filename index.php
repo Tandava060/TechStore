@@ -29,13 +29,12 @@
 
 
     <section id="category" class="container mx-auto px-6 mt-16">
-
         <div class="h-64 rounded-md overflow-hidden bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1538481199705-c710c4e965fc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1565&q=80')">
             <div class="bg-gray-900 bg-opacity-50 categoryContainer">
                 <div class="px-10 max-w-xl">
                     <h2 class="text-2xl text-white font-semibold">Gaming</h2>
                     <p class="mt-2 text-gray-200">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore facere provident molestias ipsam sint voluptatum pariatur.</p>
-                    <button onclick='location.href="/ecommerce/category.php?cat=\"Gaming\""' class="flex items-center mt-4 px-3 py-2 bg-indigo-800 text-white text-sm uppercase font-medium rounded hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500">
+                    <button class="flex items-center mt-4 px-3 py-2 bg-indigo-800 text-white text-sm uppercase font-medium rounded hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500">
                         <span>Shop Now</span>
                         <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                             <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -51,7 +50,7 @@
                     <div class="px-10 max-w-xl">
                         <h2 class="text-2xl text-white font-semibold">Laptops & Computers</h2>
                         <p class="mt-2 text-gray-200">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore facere provident molestias ipsam sint voluptatum pariatur.</p>
-                        <button onclick='location.href="/ecommerce/category.php?cat=\"Computer\""' class="flex items-center mt-4 text-white text-sm uppercase font-medium rounded hover:text-indigo-500 focus:outline-none">
+                        <button class="flex items-center mt-4 text-white text-sm uppercase font-medium rounded hover:text-indigo-500 focus:outline-none">
                             <span>Shop Now</span>
                             <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                                 <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -65,7 +64,7 @@
                     <div class="px-10 max-w-xl">
                         <h2 class="text-2xl text-white font-semibold">Mobile & Tablets</h2>
                         <p class="mt-2 text-gray-200">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore facere provident molestias ipsam sint voluptatum pariatur.</p>
-                        <button onclick='location.href="/ecommerce/category.php?cat=\"Mobile\""' class="flex items-center mt-4 text-white text-sm uppercase font-medium rounded hover:text-indigo-500 focus:outline-none">
+                        <button class="flex items-center mt-4 text-white text-sm uppercase font-medium rounded hover:text-indigo-500 focus:outline-none">
                             <span>Shop Now</span>
                             <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                                 <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -79,7 +78,7 @@
                     <div class="px-10 max-w-xl">
                         <h2 class="text-2xl text-white font-semibold">Accessories</h2>
                         <p class="mt-2 text-gray-200">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore facere provident molestias ipsam sint voluptatum pariatur.</p>
-                        <button onclick='location.href="/ecommerce/category.php?cat=\"Accessories\""' class="flex items-center mt-4 text-white text-sm uppercase font-medium rounded hover:text-indigo-500 focus:outline-none">
+                        <button class="flex items-center mt-4 text-white text-sm uppercase font-medium rounded hover:text-indigo-500 focus:outline-none">
                             <span>Shop Now</span>
                             <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                                 <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -98,19 +97,8 @@
 
         <div class="mt-8 swiper">
             <ul class="swiper-wrapper">
-
-                <?php
-                $query = 'SELECT * FROM product ORDER BY pId DESC LIMIT 6;';
-                $run_query = mysqli_query($con, $query);
-                if (mysqli_num_rows($run_query) > 0) {
-                    while ($row = mysqli_fetch_array($run_query)) {
-                        $prod_id = $row['pId'];
-                        $prod_name = $row['name'];
-                        $prod_descri = $row['description'];
-                        $prod_price = $row['price'];
-
-                        echo '<li class="swiper-slide">
-                    <a class="relative block" href="/ecommerce/product.php?id=' . $prod_id . '">
+                <li class="swiper-slide">
+                    <a class="relative block" href="/product/sports-trainer">
                         <img class="object-cover w-full h-64  rounded-t-2xl" src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Sports Trainer White" loading="lazy" />
 
                         <button class="absolute p-2 text-white bg-indigo-800 rounded-full right-4 top-3" type="button">
@@ -123,16 +111,16 @@
                             <div class="px-4 py-6 border-gray-100 border-x">
 
                                 <p class=" font-semibold text-s text-indigo-800 text-right">
-                                    Rs ' . $prod_price . '
+                                    Rs54000
                                 </p>
 
                                 <h5 class="font-medium">
-                                     ' . $prod_name . '
+                                    Dell Inspiron 3511
                                 </h5>
 
 
                                 <p class="mt-1 text-xs leading-relaxed text-gray-700">
-                                     ' . $prod_descri . '
+                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque corporis reprehenderit blanditiis sit at est deserunt!
                                 </p>
                             </div>
 
@@ -141,13 +129,9 @@
                             </button>
                         </div>
                     </a>
-                </li>';
-                    };
-                }
-                ?>
+                </li>
 
-
-                <!-- <li class="swiper-slide">
+                <li class="swiper-slide">
                     <a class="relative block" href="/product/sports-trainer">
                         <img class="object-cover w-full h-64  rounded-t-2xl" src="https://images.unsplash.com/photo-1624705002806-5d72df19c3ad?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80" alt="Sports Trainer White" loading="lazy" />
 
@@ -316,7 +300,7 @@
                             </button>
                         </div>
                     </a>
-                </li> -->
+                </li>
             </ul>
             <div class="mt-12 swiper-pagination"></div>
         </div>
@@ -327,63 +311,109 @@
             Our Products
         </h2>
 
+        <div class="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
+            <div class="mb-10">
+                <a class="relative block" href="/singleProduct.html">
+                    <img class="object-cover w-full h-64 rounded-t-2xl" src="https://images.unsplash.com/photo-1601070124916-5ad3dd628d28?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80" alt="Sports Trainer White" loading="lazy" />
 
-        <!-- All products with pagination -->
-        <div id="AllProd" class="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
+                    <button class="absolute p-2 text-white bg-indigo-800 rounded-full right-4 top-4" type="button">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </button>
 
-            <script>
-                var page = 0;
-                var arr = [];
-            </script>
-            <?php
-            $query = 'SELECT * FROM product ORDER BY pId DESC';
-            $run_query = mysqli_query($con, $query);
-            if (mysqli_num_rows($run_query) > 0) {
-                while ($row = mysqli_fetch_array($run_query)) {
-                    echo '<script> 
-                            var obj = {
-                                id: ' . $row['pId'] . ',
-                                name: "' . $row['name'] . '",
-                                descri : "' . $row['description'] . '",
-                                price: ' . $row['price'] . '
-                            }; 
-                            arr.push(obj);
-                        </script>';
-                }
-            }
+                    <div>
+                        <div class="px-4 py-6 border-gray-100 border-x relative">
 
-            ?>
+                            <p class=" font-semibold text-s text-indigo-800 text-right">
+                                Rs54000
+                            </p>
 
-            <script>
-                document.getElementById('AllProd').innerHTML = '';
-                for (let i = page; i < page + 6; i++) {
-                    if (i < arr.length) {
-                        document.getElementById('AllProd').innerHTML += '<div class="mb-10"><a class="relative block" href="/ecommerce/product.php?id=' +
-                            arr[i].id +
-                            '"><img class="object-cover w-full h-64 rounded-t-2xl" src = "https://images.unsplash.com/photo-1601070124916-5ad3dd628d28?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80" alt = "Sports Trainer White" loading = "lazy" / > ' +
-                            '<button class="absolute p-2 text-white bg-indigo-800 rounded-full right-4 top-4" type="button"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path stroke - linecap = "round" stroke - linejoin = "round" stroke - width = "2" d = "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" > < /path></svg > </button>' +
-                            '<div><div class="px-4 py-6 border-gray-100 border-x relative"><p class=" font-semibold text-s text-indigo-800 text-right">Rs' + arr[i].price +
-                            '</p><h5 class="font-medium">' + arr[i].name +
-                            '</h5><p class="mt-1 text-xs leading-relaxed text-gray-700">' + arr[i].descri +
-                            '</p></div><button class="w-full rounded-b-2xl p-3 text-xs tracking-wide text-center text-white uppercase bg-indigo-800 hover:bg-indigo-600" type="button">Add to Cart</button></div></a></div>';
+                            <h5 class="font-medium">
+                                Samsung Galaxy Note 20
+                            </h5>
 
-                    }
+                            <p class="mt-1 text-xs leading-relaxed text-gray-700">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque corporis reprehenderit blanditiis sit at est deserunt!
+                            </p>
+                        </div>
 
-                }
+                        <button class="w-full rounded-b-2xl p-3 text-xs tracking-wide text-center text-white uppercase bg-indigo-800 hover:bg-indigo-600" type="button">
+                            Add to Cart
+                        </button>
+                    </div>
+                </a>
+            </div>
 
-                // arr.forEach((prod) => {
-                //     console.log(prod.name)
-                //     document.getElementById('AllProd').innerHTML += '<div class="mb-10"><a class="relative block" href="/ecommerce/product.php?id=' +
-                //         prod.id +
-                //         '"><img class="object-cover w-full h-64 rounded-t-2xl" src = "https://images.unsplash.com/photo-1601070124916-5ad3dd628d28?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80" alt = "Sports Trainer White" loading = "lazy" / > ' +
-                //         '<button class="absolute p-2 text-white bg-indigo-800 rounded-full right-4 top-4" type="button"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path stroke - linecap = "round" stroke - linejoin = "round" stroke - width = "2" d = "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" > < /path></svg > </button>' +
-                //         '<div><div class="px-4 py-6 border-gray-100 border-x relative"><p class=" font-semibold text-s text-indigo-800 text-right">Rs' + prod.price +
-                //         '</p><h5 class="font-medium">' + prod.name +
-                //         '</h5><p class="mt-1 text-xs leading-relaxed text-gray-700">' + prod.descri +
-                //         '</p></div><button class="w-full rounded-b-2xl p-3 text-xs tracking-wide text-center text-white uppercase bg-indigo-800 hover:bg-indigo-600" type="button">Add to Cart</button></div></a></div>';
-                // })
-            </script>
-            
+            <div class="mb-10">
+                <a class="relative block" href="/product/sports-trainer">
+                    <img class="object-cover w-full h-64  rounded-t-2xl" src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80" alt="Sports Trainer White" loading="lazy" />
+
+                    <button class="absolute p-2 text-white bg-indigo-800 rounded-full right-4 top-4" type="button">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </button>
+
+                    <div>
+                        <div class="px-4 py-6 border-gray-100 border-x">
+
+                            <p class=" font-semibold text-s text-indigo-800 text-right">
+                                Rs54000
+                            </p>
+
+                            <h5 class="font-medium">
+                                ASUS Laptop L410
+                            </h5>
+
+
+
+                            <p class="mt-1 text-xs leading-relaxed text-gray-700">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque corporis reprehenderit blanditiis sit at est deserunt!
+                            </p>
+                        </div>
+
+                        <button class="w-full rounded-b-2xl p-3 text-xs tracking-wide text-center text-white uppercase bg-indigo-800 hover:bg-indigo-600" type="button">
+                            Add to Cart
+                        </button>
+                    </div>
+                </a>
+            </div>
+
+            <div class="mb-10">
+                <a class="relative block" href="/product/sports-trainer">
+                    <img class="object-cover w-full h-64  rounded-t-2xl" src="https://images.unsplash.com/photo-1617294864705-eaf3c911259f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Sports Trainer White" loading="lazy" />
+
+                    <button class="absolute p-2 text-white bg-indigo-800 rounded-full right-4 top-4" type="button">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </button>
+
+                    <div>
+                        <div class="px-4 py-6 border-gray-100 border-x">
+
+                            <p class=" font-semibold text-s text-indigo-800 text-right">
+                                Rs54000
+                            </p>
+
+                            <h5 class="font-medium">
+                                MSI GF65 Thin 10 UE-047
+                            </h5>
+
+
+
+                            <p class="mt-1 text-xs leading-relaxed text-gray-700">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque corporis reprehenderit blanditiis sit at est deserunt!
+                            </p>
+                        </div>
+
+                        <button class="w-full rounded-b-2xl p-3 text-xs tracking-wide text-center text-white uppercase bg-indigo-800  hover:bg-indigo-600" type="button">
+                            Add to Cart
+                        </button>
+                    </div>
+                </a>
+            </div>
 
             <div class="mb-10">
                 <a class="relative block" href="/product/sports-trainer">
@@ -564,8 +594,8 @@
         <div class="mx-auto mt-3">
             <ol class="flex justify-center space-x-1 text-xs font-medium">
                 <li>
-                    <button onclick="page-=6" class="inline-flex items-center justify-center w-8 h-8 border border-gray-100 rounded-full hover:bg-blue-500 hover:text-white hover:border-none">
-                        < <button>
+                    <a href="" class="inline-flex items-center justify-center w-8 h-8 border border-gray-100 rounded-full hover:bg-blue-500 hover:text-white hover:border-none">
+                        < </a>
                 </li>
 
                 <li>
@@ -583,9 +613,9 @@
                 </li>
 
                 <li>
-                    <button onclick="page+=6" class="inline-flex items-center justify-center w-8 h-8 border border-gray-100 rounded-full hover:bg-blue-500 hover:text-white hover:border-none">
+                    <a href="" class="inline-flex items-center justify-center w-8 h-8 border border-gray-100 rounded-full hover:bg-blue-500 hover:text-white hover:border-none">
                         >
-                    </button>
+                    </a>
                 </li>
             </ol>
 
@@ -595,7 +625,7 @@
 
 
     <?php
-    include 'assets/elem/footer.php';
+        include 'assets/elem/footer.php';
     ?>
 
     <script>
