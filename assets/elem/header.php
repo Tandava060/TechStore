@@ -346,4 +346,8 @@ session_start();
             // ANIMATION
         };
      };
+
+     function remove_to_cart($con, $id){
+         
+     }
 ?>
