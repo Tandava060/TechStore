@@ -23,6 +23,7 @@
     <?php
     include 'assets/elem/header.php';
     include 'assets/elem/searchBar.php';
+  
     ?>
 
 

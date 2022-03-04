@@ -1,5 +1,12 @@
 <link rel="stylesheet" href="assets/css/sidecart.css ">
 
+
+  
+<?php
+session_start();
+include 'config/dbconnect.php';
+?>
+
 <section id="mySidenav" class="sidenav ">
     <section class=" grid grid-cols-2 gap-4">
         <div class="">
@@ -274,14 +281,31 @@
                             </svg>
                         </button>
                         <div class=" hidden absolute left-0 z-20 w-44 top-10 bg-white rounded-md shadow-xl">
-                            <a href="/ecommerce/login.php" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600">
-                                Login
-                            </a>
-                            <a href="/ecommerce/register.php" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600">
-                                Sign Up
-                            </a>
+                        <?php
+
+if(isset($_SESSION["uid"])){
+    echo '<a href="/ecommerce/logout.php" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600">Logout</a>';
+    
+    
+} else {
+    echo '<a href="/ecommerce/login.php" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600">Login</a><a href="/ecommerce/register.php" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600"> Sign Up</a>';
+                      
+}
+                           
+
+                      
+
+                        ?>
                         </div>
                     </div>
+
+                    <p> 
+                        <?php
+                    if(isset($_SESSION["name"])){
+                        echo "Welcome ".strtoupper($_SESSION["name"]);
+                    } 
+                    ?>
+                    </p>
 
 
                     <div class="flex sm:hidden">
@@ -323,6 +347,5 @@
         </div>
     </header>
 </section>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 <script src="assets/js/sidecart.js"></script>
