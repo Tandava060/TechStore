@@ -17,6 +17,7 @@
 <body>
     <?php
     include 'assets/elem/header.php';
+  
     ?>
 
    
@@ -69,7 +70,7 @@
    
             </div>
                             <div class="flex flex-col mt-4 lg:space-y-2">
-                                <button type="submit" name="add" class=" flex items-center justify-center  w-full  px-8  py-3 font-medium  text-center text-white inputTrans  bg-indigo-600 rounded-xl hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 "> Register </button>
+                                <button type="submit" name="add" class=" flex items-center justify-center  w-full  px-8  py-3 font-medium  text-center text-white inputTrans  bg-indigo-600 rounded-xl hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 "> Add </button>
 
                             </div>
                         </form>
@@ -95,14 +96,11 @@ if (isset($_POST["add"])) {
     
   
 
-    $sql = "INSERT INTO `product`(name,price,description,category, stock) VALUES ('$name', '$price', '$description', '$category', '$stock')";
-   
+    $sql = "INSERT INTO `product`(name,price,description,category, stock) VALUES ('$name', '$price', '$description', '$category', '$stock')";  
     if(mysqli_query($con,$sql)){
         $pId = mysqli_insert_id($con);
         $fileNames = array_filter($_FILES['image']['name']); 
-    if(!empty( $fileNames)) { 
-       
-        
+    if(!empty( $fileNames)) {        
         foreach($_FILES['image']['name'] as $key=>$val){
             
             $image = $_FILES['image']['tmp_name'][$key]; 
@@ -110,18 +108,13 @@ if (isset($_POST["add"])) {
             
          $sql = "INSERT into images (image, pId) VALUES ('$imgContent', '$pId')";
             $insert = $con->query($sql); 
-            echo "<script>console.log('a')</script>";
         }
-      
-           
     }
-
-      
-        echo "<script> location.href='addProduct.php'; </script>";
+        echo "<script> location.href='addProduct.php?sts=true'; </script>";
         
         
     } else {
-        echo("Error description: " . $con -> error);
+        echo "<script> location.href='addProduct.php?sts=".$con -> error."; </script>";
     }
 }
 ?>

@@ -25,7 +25,10 @@ transition-duration: 500ms;
     font-size: 13px;
 }
 
-
+.btnPos {
+    margin-left: 80vw;
+    margin-bottom: 40px;
+}
 
 @media only screen and (max-width: 1028px) {
     #login {

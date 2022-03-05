@@ -45,16 +45,7 @@
                     <h2 class="text-2xl text-white font-semibold">Gaming</h2>
                     <p class="mt-2 text-gray-200">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore facere provident molestias ipsam sint voluptatum pariatur.</p>
                     <button onclick='location.href="/ecommerce/category.php?cat=\"Gaming\""' class="flex items-center mt-4 px-3 py-2 bg-indigo-800 text-white text-sm uppercase font-medium rounded hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500">
-                        <span>Shop Now</span>
-                        <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                            <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-
-    
-        
-
-  
-                        </svg>
-                    </button>
+                        Shop Now</button>
                 </div>
             </div>
         </div>
