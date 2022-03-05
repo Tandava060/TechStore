@@ -333,7 +333,7 @@ session_start();
                         </div>
                     </div>
                     <a class="mt-5 text-gray-600  text-xl hover:text-indigo-700 sm:mx-6 sm:mt-0" href="/ecommerce/contact.php">Contact</a>
-                    <a class="mt-5 text-gray-600  text-xl hover:text-indigo-700 sm:mx-6 sm:mt-0" href="/ecommerce/about.php">About</a>
+                   
                 </div>
             </nav>
 
@@ -348,7 +348,7 @@ session_start();
         if(isset($_SESSION['uid'])){
             $query = "INSERT INTO `cart` (`id`, `userId`, `pId`, `qty`, `status`)   VALUES (NULL, " . $_SESSION['uid'] . ", ".$id.", '1', 'cart');";
             if (mysqli_query($con, $query)) {
-                // ANIMATION
+             
             };
         };
      };
