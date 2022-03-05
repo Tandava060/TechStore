@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TechNeva</title>
     <script src="https://cdn.tailwindcss.com?plugins=aspect-ratio,forms"></script>
     <link rel="stylesheet" href="assets/css/index.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -16,11 +16,16 @@
     <?php
     include 'assets/elem/header.php';
     if (isset($_GET['sts'])) {
+        if ($_GET['sts'] == 'true') {
+            $msg = "Successfully Deleted!";
+        } else if ($_GET['sts'] == 'update') {
+            $msg = "Successfully edited!";
+        }
       echo  '<div id="alert" class=" mt-6 flex max-w-6xl mx-auto p-4 mb-4 bg-green-100 rounded-lg dark:bg-green-200" role="alert">
         <svg class="flex-shrink-0 w-5 h-5 text-green-700 dark:text-green-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
         </svg>
-        <div id="alertText" class="ml-3 text-sm font-medium text-green-700 dark:text-green-800"> Successfully Deleted!</div>
+        <div id="alertText" class="ml-3 text-sm font-medium text-green-700 dark:text-green-800">'.$msg.'</div>
         <button  class="ml-auto -mx-1.5 -my-1.5 bg-green-100 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex h-8 w-8 dark:bg-green-200 dark:text-green-600 dark:hover:bg-green-300">
             <span class="sr-only">Close</span>
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -52,6 +57,9 @@
             </th>
             <th class="border-b-2 p-8 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
                 view
+            </th>
+            <th class="border-b-2 p-8 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
+                Edit
             </th>
             <th class="border-b-2 p-8 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
                 Delete
@@ -88,6 +96,9 @@
                         </td>
                         <td class="border-b-2 p-8 dark:border-dark-5">
                         <a href="/ecommerce/product.php?id=' . $id . '"><i class="material-icons">remove_red_eye</i></a>
+                        </td>
+                        <td class="border-b-2 p-8 dark:border-dark-5">
+                        <a href="/ecommerce/editProduct.php?id=' . $id . '"><i class="material-icons">create</i></a>
                         </td>
                         <td class="border-b-2 p-8 dark:border-dark-5">
                         <a href="/ecommerce/delProduct.php?id=' . $id . '"><i class="material-icons">delete</i></a>
