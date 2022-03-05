@@ -258,6 +258,7 @@
             if (mysqli_num_rows($run_query) > 0) {
                 while ($row = mysqli_fetch_array($run_query)) {
                     echo '<script> 
+                        console.log('. $row['description'] .')
                             var obj = {
                                 id: ' . $row['pId'] . ',
                                 name: "' . $row['name'] . '",

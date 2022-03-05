@@ -57,7 +57,7 @@
   <select  required name="category" class="w-full px-5  py-3 placeholder-gray-400 border border-transparent rounded-lg inputTrans  bg-gray-50 focus:ring-2 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-300">
     <option disabled selected>Pick one</option>
     <option value="Gaming">Gaming</option>
-    <option value="Laptops & Gaming">Laptops & Gaming</option>
+    <option value="Laptops & Computers">Laptops & Computers</option>
     <option value="Mobile & Tablets">Mobile & Tablets</option>
     <option value="Accessories">Accessories</option>
   </select>
