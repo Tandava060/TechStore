@@ -59,6 +59,7 @@ session_start();
             <?php
             include 'config/dbconnect.php';
 
+            if (isset($_SESSION["uid"])) {
             $query = 'SELECT product.name, product.description, product.price FROM cart JOIN user ON cart.userId = user.userId JOIN product ON product.pId = cart.pId WHERE cart.status = "cart" AND user.userId = '. $_SESSION["uid"];
             $run_query = mysqli_query($con, $query);
             if (mysqli_num_rows($run_query) > 0) {
@@ -107,7 +108,8 @@ session_start();
                 <hr>';
                 $index++;
                 };
-            }
+            };
+        }
             ?>
 
             
@@ -343,9 +345,11 @@ session_start();
 
 <?php
      function add_to_cart($con, $id){
-        $query = "INSERT INTO `cart` (`id`, `userId`, `pId`, `qty`, `status`) VALUES (NULL, " . $_SESSION['uid'] . ", ".$id.", '1', 'cart');";
-        if (mysqli_query($con, $query)) {
-            // ANIMATION
+        if(isset($_SESSION['uid'])){
+            $query = "INSERT INTO `cart` (`id`, `userId`, `pId`, `qty`, `status`)   VALUES (NULL, " . $_SESSION['uid'] . ", ".$id.", '1', 'cart');";
+            if (mysqli_query($con, $query)) {
+                // ANIMATION
+            };
         };
      };
 

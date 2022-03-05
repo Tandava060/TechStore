@@ -25,6 +25,8 @@
                 $run_query = mysqli_query($con, $query);
                 $query = "DELETE FROM images WHERE  Pid = ".$url_id;   
                 mysqli_query($con, $query);
+                $query = "DELETE FROM cart WHERE pId = ".$url_id;  
+                mysqli_query($con, $query);
                 $query = "DELETE FROM product WHERE pId = ".$url_id;  
                 mysqli_query($con, $query);
                 echo "<script> location.href='adminProduct.php?sts=true'; </script>'; </script>";
