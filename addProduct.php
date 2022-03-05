@@ -17,7 +17,10 @@
 <body>
     <?php
     include 'assets/elem/header.php';
+  
     ?>
+
+   
 
     <section>
         <div class="px-4 py-12 mx-auto max-w-6xl sm:px-6 md:px-12 lg:px-24 lg:py-12 2xl:py-24">
@@ -38,7 +41,10 @@
                                 </div>
                             </div>
 
-                     
+                            <div>
+                                    <label for="stock" class="px-2 leading-10 text-sm text-gray-600">Stock</label>
+                                    <input required type="number" name="stock" id="stock" class="w-full px-5  py-3 placeholder-gray-400 border border-transparent rounded-lg inputTrans  bg-gray-50 focus:ring-2 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-300" placeholder="20000">
+                                </div>
 
                             <div>
                                 <label for="email" class="px-2 leading-10 text-sm text-gray-600">Description</label>
@@ -64,7 +70,7 @@
    
             </div>
                             <div class="flex flex-col mt-4 lg:space-y-2">
-                                <button type="submit" name="add" class=" flex items-center justify-center  w-full  px-8  py-3 font-medium  text-center text-white inputTrans  bg-indigo-600 rounded-xl hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 "> Register </button>
+                                <button type="submit" name="add" class=" flex items-center justify-center  w-full  px-8  py-3 font-medium  text-center text-white inputTrans  bg-indigo-600 rounded-xl hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 "> Add </button>
 
                             </div>
                         </form>
@@ -85,18 +91,16 @@ if (isset($_POST["add"])) {
     $price = $_POST["price"];
     $description = $_POST["description"];
     $category= $_POST["category"];
+    $stock= $_POST["stock"];
    
     
   
 
-    $sql = "INSERT INTO `product`(name,price,description,category) VALUES ('$name', '$price', '$description', '$category')";
-   
+    $sql = "INSERT INTO `product`(name,price,description,category, stock) VALUES ('$name', '$price', '$description', '$category', '$stock')";  
     if(mysqli_query($con,$sql)){
         $pId = mysqli_insert_id($con);
         $fileNames = array_filter($_FILES['image']['name']); 
-    if(!empty( $fileNames)) { 
-       
-        
+    if(!empty( $fileNames)) {        
         foreach($_FILES['image']['name'] as $key=>$val){
             
             $image = $_FILES['image']['tmp_name'][$key]; 
@@ -104,18 +108,13 @@ if (isset($_POST["add"])) {
             
          $sql = "INSERT into images (image, pId) VALUES ('$imgContent', '$pId')";
             $insert = $con->query($sql); 
-            echo "<script>console.log('a')</script>";
         }
-      
-           
     }
-
-      
-        echo "<script> location.href='addProduct.php'; </script>";
+        echo "<script> location.href='addProduct.php?sts=true'; </script>";
         
         
     } else {
-        echo("Error description: " . $con -> error);
+        echo "<script> location.href='addProduct.php?sts=".$con -> error."; </script>";
     }
 }
 ?>
