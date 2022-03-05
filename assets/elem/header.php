@@ -16,60 +16,22 @@ session_start();
     <hr class="my-8">
     <section class='cartWrapper container'>
         <div class='items'>
-            <div class="item grid grid-cols-3 my-8">
-                <div class="col-span-1">
-                    <div class="flip-card">
-                        <div class="flip-inner">
-                            <div class="imgwrap">
-                                <img src="https://cdn11.bigcommerce.com/s-idcdidwm48/images/stencil/120w/products/7700/31266/CROSSHAIR17-1-1024x1024__18568.1640972744.png" alt="" srcset="">
-                            </div>
-                            <div class="card-back">
 
-
-                                <button type="button" class="py-2 px-8 my-2  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white  transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
-                                    View</button>
-                                <button type="button" class="py-2 px-8 my-2 bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white  transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
-                                    Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                    </div>
-                </div>
-                <div class="col-span-2">
-                    <div class="title">
-                        <span>MSI Crosshair17 17.3" 144Hz FHD Gaming Laptop Intel Core i7-11800H RTX3060 16GB 512GBNVMe SSD Win...</span>
-                    </div>
-                    <div class="grid grid-cols-2">
-                        <div class="">
-                            <table class="table-fixed table">
-                                <td onclick="decrease(0)">&#45;</td>
-                                <td><input type="number" class="qty" value="1" min="1" max="99" name=""></td>
-                                <td onclick="increase(0)">&#43;</td>
-                            </table>
-                        </div>
-                        <div class="">
-                            <span class="price">Rs97,990</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr>
 
             <?php
             include 'config/dbconnect.php';
 
             if (isset($_SESSION["uid"])) {
-            $query = 'SELECT product.name, product.description, product.price FROM cart JOIN user ON cart.userId = user.userId JOIN product ON product.pId = cart.pId WHERE cart.status = "cart" AND user.userId = '. $_SESSION["uid"];
-            $run_query = mysqli_query($con, $query);
-            if (mysqli_num_rows($run_query) > 0) {
-                $index=1;
-                while ($row = mysqli_fetch_array($run_query)) {
-                    $prod_name = $row['name'];
-                    $prod_descri = $row['description'];
-                    $prod_price = $row['price'];
+                $query = 'SELECT product.name, product.description, product.price FROM cart JOIN user ON cart.userId = user.userId JOIN product ON product.pId = cart.pId WHERE cart.status = "cart" AND user.userId = ' . $_SESSION["uid"];
+                $run_query = mysqli_query($con, $query);
+                if (mysqli_num_rows($run_query) > 0) {
+                    $index = 1;
+                    while ($row = mysqli_fetch_array($run_query)) {
+                        $prod_name = $row['name'];
+                        $prod_descri = $row['description'];
+                        $prod_price = $row['price'];
 
-                    echo '<div class="item grid grid-cols-3 my-8">
+                        echo '<div class="item grid grid-cols-3 my-8">
                     <div class="col-span-1">
                         <div class="flip-card">
                             <div class="flip-inner">
@@ -94,7 +56,7 @@ session_start();
                         <div class="grid grid-cols-2">
                             <div class="">
                                 <table class="table-fixed table">
-                                    <td onclick="decrease('.$index. ')">&#45;</td>
+                                    <td onclick="decrease(' . $index . ')">&#45;</td>
                                     <td><input type="number" class="qty" value="1" min="1" max="99" name=""></td>
                                     <td onclick="increase(' . $index . ')">&#43;</td>
                                 </table>
@@ -106,13 +68,13 @@ session_start();
                     </div>
                 </div>
                 <hr>';
-                $index++;
+                        $index++;
+                    };
                 };
-            };
-        }
+            }
             ?>
 
-            
+
 
 
         </div>
@@ -134,7 +96,7 @@ session_start();
             </p>
         </div>
         <div class='checkout'>
-            <button class="py-2 px-8 my-2  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white  transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  ">CHECK OUT &#8594;</button>
+            <button onclick='location.href="/ecommerce/checkout.php"' class="py-2 px-8 my-2  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white  transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  ">CHECK OUT &#8594;</button>
         </div>
     </section>
 </section>
@@ -142,7 +104,7 @@ session_start();
 <section id="main">
     <header>
         <div class="container mx-auto px-6 py-3">
-            <div class="flex items-center justify-between">
+            <div class="flex  items-center justify-between">
                 <div class="w-full">
 
                 </div>
@@ -318,22 +280,22 @@ session_start();
                             <path d="M12 15.713L18.01 9.70299L16.597 8.28799L12 12.888L7.40399 8.28799L5.98999 9.70199L12 15.713Z" fill="currentColor"></path>
                         </svg>
                         <div class="hidden absolute left-0 z-20 w-44 top-8 bg-white rounded-md shadow-xl">
-                            <a href="/ecommerce/category.php?cat='Gaming'" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600">
+                            <a href="/ecommerce/category.php?cat=Gaming" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600">
                                 Gaming
                             </a>
-                            <a href="/ecommerce/category.php?cat='Computer'" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600">
+                            <a href="/ecommerce/category.php?cat=Laptops" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600">
                                 Laptops & Computers
                             </a>
-                            <a href="/ecommerce/category.php?cat='Mobile'" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600">
+                            <a href="/ecommerce/category.php?cat=Mobile" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600">
                                 Mobile & Tablets
                             </a>
-                            <a href="/ecommerce/category.php?cat='Accessories'" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600">
+                            <a href="/ecommerce/category.php?cat=Accessories" class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform hover:font-medium hover:bg-gray-100 hover:text-indigo-600">
                                 Accessories
                             </a>
                         </div>
                     </div>
                     <a class="mt-5 text-gray-600  text-xl hover:text-indigo-700 sm:mx-6 sm:mt-0" href="/ecommerce/contact.php">Contact</a>
-                    <a class="mt-5 text-gray-600  text-xl hover:text-indigo-700 sm:mx-6 sm:mt-0" href="/ecommerce/about.php">About</a>
+
                 </div>
             </nav>
 
@@ -344,16 +306,22 @@ session_start();
 <script src="assets/js/sidecart.js"></script>
 
 <?php
-     function add_to_cart($con, $id){
-        if(isset($_SESSION['uid'])){
-            $query = "INSERT INTO `cart` (`id`, `userId`, `pId`, `qty`, `status`)   VALUES (NULL, " . $_SESSION['uid'] . ", ".$id.", '1', 'cart');";
-            if (mysqli_query($con, $query)) {
-                // ANIMATION
-            };
+function add_to_cart($con, $id)
+{
+    if (isset($_SESSION['uid'])) {
+        $query = "INSERT INTO `cart` (`id`, `userId`, `pId`, `qty`, `status`)   VALUES (NULL, " . $_SESSION['uid'] . ", " . $id . ", '1', 'cart');";
+        if (mysqli_query($con, $query)) {
         };
-     };
+    };
+};
 
-     function remove_to_cart($con, $id){
-         
-     }
+function remove_from_cart($con, $id)
+{
+    if (isset($_SESSION['uid'])) {
+        $query = "DELETE FROM cart WHERE pId = " . $id;
+        if (mysqli_query($con, $query)) {
+            // ANIMATION
+        };
+    };
+}
 ?>
