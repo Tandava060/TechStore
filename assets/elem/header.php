@@ -134,7 +134,7 @@ session_start();
             </p>
         </div>
         <div class='checkout'>
-            <button class="py-2 px-8 my-2  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white  transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  ">CHECK OUT &#8594;</button>
+            <button onclick='location.href="/ecommerce/checkout.php"' class="py-2 px-8 my-2  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white  transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  ">CHECK OUT &#8594;</button>
         </div>
     </section>
 </section>
@@ -142,7 +142,7 @@ session_start();
 <section id="main">
     <header>
         <div class="container mx-auto px-6 py-3">
-            <div class="flex items-center justify-between">
+            <div class="flex  items-center justify-between">
                 <div class="w-full">
 
                 </div>

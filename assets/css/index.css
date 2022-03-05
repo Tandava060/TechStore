@@ -30,6 +30,13 @@ transition-duration: 500ms;
     margin-bottom: 40px;
 }
 
+#checkout {
+    height: 80vh;
+    display: flex;
+}
+
+
+
 @media only screen and (max-width: 1028px) {
     #login {
         height: 80vh;
